@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<body id = "home">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página Principal</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app" class="home-container">
+
+    <div class="top-bar">
+      <div class="search-box">
+        🔍 <input type="text" v-model="search" placeholder="Buscar" />
+      </div>
+      <button class="logout-button" @click="logout">Cerrar sesión</button>
+    </div>
+
+
+    <div class="card" v-for="item in filteredItems" :key="item.title">
+      <div class="card-image"></div>
+      <div class="card-text">
+        <strong>{{ item.title }}</strong>
+        <div class="description">{{ item.description }}</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          search: '',
+          items: [
+            { title: 'Pastel de papa', description: 'El pastel de papa o pastel de carne es un plato que consiste en una capa de papas sobre una capa de carne picada sazonada, con o sin base de papa debajo. Se consume principalmente en países de América del Sur. Está basado en el plato de origen británico cottage pie, cuya traducción literal es ‘pastel del rancho.' },
+            { title: 'Tarta de cebolla y queso', description: 'La tarta de cebolla y queso es un plato salado, típico de la cocina casera, que combina una base de masa crujiente con un relleno suave y cremoso de cebollas caramelizadas y queso fundido, ofreciendo un sabor dulce y salado muy sabroso.' },
+            { title: 'Chocotorta', description: 'DLa chocotorta es un postre argentino fácil y delicioso, hecho con capas de galletitas de chocolate mojadas en café y un relleno cremoso de queso crema mezclado con dulce de leche. Se refrigera para que quede suave y se sirve frío.' }
+          ]
+        };
+      },
+      computed: {
+        filteredItems() {
+          return this.items.filter(item =>
+            item.title.toLowerCase().includes(this.search.toLowerCase())
+          );
+        }
+      },
+      methods: {
+        logout() {
+          window.location.href = "index.html";
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>

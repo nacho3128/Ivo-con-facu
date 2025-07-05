@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<body id="login">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar sesión - CookingBro</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app" class="login-container">
+    <div class="login-card">
+      <div class="login-header">Iniciar sesión</div>
+
+      <input type="email" v-model="email" placeholder="Mail" class="input" />
+      <input type="password" v-model="password" placeholder="Contraseña" class="input" />
+
+      <button @click="login" class="login-button">Comenzar</button>
+    </div>
+
+    <button @click="goBack" class="back-button">↩</button>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          email: '',
+          password: ''
+        };
+      },
+      methods: {
+        login() {
+          window.location.href = "home.html";
+        },
+        goBack() {
+          window.location.href = "index.html";
+        }
+      }
+    }).mount("#app");
+  </script>
+</body>
+</html>
