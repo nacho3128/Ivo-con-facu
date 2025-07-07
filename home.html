@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<body id = "home">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Página Principal</title>
@@ -9,6 +9,7 @@
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+<body id = "home">
   <div id="app" class="home-container">
 
     <div class="top-bar">
@@ -39,17 +40,22 @@
             {
             title: 'Pastel de papa',
             description: 'El pastel de papa o pastel de carne es un plato que consiste en una capa de papas sobre una capa de carne picada sazonada, con o sin base de papa debajo. Se consume principalmente en países de América del Sur. Está basado en el plato de origen británico cottage pie, cuya traducción literal es ‘pastel del rancho.',
-            image: 'img/pastel de papa.jpg'
+            image: 'img/pastel de papa.jpg',
+            link: 'pastel.html'
+
             },
             {
             title: 'Tarta de cebolla y queso',
             description: 'La tarta de cebolla y queso es un plato salado, típico de la cocina casera, que combina una base de masa crujiente con un relleno suave y cremoso de cebollas caramelizadas y queso fundido, ofreciendo un sabor dulce y salado muy sabroso.',
-            image: 'img/tarta de polla y queso.webp'
+            image: 'img/tarta de polla y queso.webp',
+            link: 'tarta.html'
+
            },
             {
             title: 'Chocotorta',
             description: 'La chocotorta es un postre argentino fácil y delicioso, hecho con capas de galletitas de chocolate mojadas en café y un relleno cremoso de queso crema mezclado con dulce de leche. Se refrigera para que quede suave y se sirve frío.',
-            image: 'img/chototorta.jpg'
+            image: 'img/chototorta.jpg',
+            link: 'chocotorta.html'
             }
           ]
         };
@@ -64,8 +70,13 @@
       methods: {
         logout() {
           window.location.href = "index.html";
+        },
+          
+        goToDetail(item){
+          window.location.href = item.link;
         }
       }
+
       
       
     }).mount("#app");
